@@ -15,7 +15,7 @@ var (
 	moviesCache cache.MoviesCache = cache.NewRedisCache("redis-15737.c52.us-east-1-4.ec2.cloud.redislabs.com:15737", 0, 60*60)
 )
 
-// ByReleaseDate implements sort.Interface based on the Age field.
+// ByReleaseDate implements sort.Interface based on the ReleaseDate field.
 type ByReleaseDate []collections.Film
 
 func (a ByReleaseDate) Len() int           { return len(a) }
