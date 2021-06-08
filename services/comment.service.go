@@ -9,6 +9,7 @@ import (
 
 func AddMovieComment(comment collections.MovieComment) (bool, error) {
 	newComment := &collections.MovieComment{
+		Id:      1,
 		MovieId: comment.MovieId,
 		Email:   comment.Email,
 		Comment: comment.Comment,
