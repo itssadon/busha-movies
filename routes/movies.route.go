@@ -12,11 +12,11 @@ import (
 )
 
 var (
-	moviesCache cache.MoviesCache = cache.NewRedisCache("redis-15737.c52.us-east-1-4.ec2.cloud.redislabs.com:15737", 0, 60*60)
+	moviesCache cache.MoviesCache = cache.NewRedisCache("redis-15737.c52.us-east-1-4.ec2.cloud.redislabs.com:15737", 0, "vPAfLOsfockxKnJUBWODZEEl1NGhPuN7", 60*60)
 )
 
 // ByReleaseDate implements sort.Interface based on the ReleaseDate field.
-type ByReleaseDate []collections.Film
+type ByReleaseDate []collections.Movie
 
 func (a ByReleaseDate) Len() int           { return len(a) }
 func (a ByReleaseDate) Less(i, j int) bool { return a[i].ReleaseDate < a[j].ReleaseDate }
@@ -25,7 +25,7 @@ func (a ByReleaseDate) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func GetMovies(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-type", "application/json")
 
-	var movieList *collections.FilmCollection = moviesCache.Get("movies")
+	var movieList *collections.MovieCollection = moviesCache.Get("movies")
 	if movieList == nil {
 		movieList, err := services.GetSwapiFilms()
 		if err != nil {

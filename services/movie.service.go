@@ -11,8 +11,8 @@ import (
 
 const swapiBaseUrl = "https://swapi.dev/api"
 
-func GetSwapiFilms() (*collections.FilmCollection, error) {
-	result := &collections.FilmCollection{}
+func GetSwapiFilms() (*collections.MovieCollection, error) {
+	result := &collections.MovieCollection{}
 
 	response, err := http.Get(fmt.Sprintf("%s%s", swapiBaseUrl, "/films/"))
 	if err != nil {
